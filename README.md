@@ -1,16 +1,17 @@
 # NextJs, Storyblok & Tailwind CSS Template
 
-Base setup for all Antler Digital NextJS Storyblok sites. 
-
-
+Base setup for all Antler Digital NextJS Storyblok sites.
 
 ## Includes
-- Eslint 
-- Prettier 
+
+- Eslint
+  - Custom config set
+- Prettier
 - Tailwind CSS
 - NextJS
-- Storyblok 
-
+- Storyblok
+- React Hook Forms
+- AOS (watch out for static rendering and google crawlers not seeing correct content)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

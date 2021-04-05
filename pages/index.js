@@ -1,20 +1,13 @@
-import Head from 'next/head'
-
 export default function Home() {
   return (
     <div className="">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="">
-
-      </main>
-
-      <footer className="">
-      Antler Digital Template
-      </footer>
-    </div >
-  )
+      <main className=""></main>
+      <p>
+        <ul>
+          <li></li>
+        </ul>
+      </p>
+      <footer className=" text-4xl ">Antler Digital Template</footer>
+    </div>
+  );
 }
