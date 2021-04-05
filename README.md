@@ -6,6 +6,16 @@ Base setup for all Antler Digital NextJS Storyblok sites.
 
 https://www.storyblok.com/tp/add-a-headless-cms-to-next-js-in-5-minutes#adding-preview-mode
 
+https://www.storyblok.com/docs/api/management#core-resources/component-groups/create-component-group
+
+### NextJS Graphql Example
+
+https://github.com/vercel/next.js/tree/canary/examples/cms-storyblok
+
+### Graphql Playground
+
+https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
+
 ## Includes
 
 - Eslint
@@ -16,3 +26,8 @@ https://www.storyblok.com/tp/add-a-headless-cms-to-next-js-in-5-minutes#adding-p
 - Storyblok
 - React Hook Forms
 - AOS (watch out for static rendering and google crawlers not seeing correct content
+
+## To Add
+
+1. Component management - want to extract and pull down components and then be able to upload base components to the StoryBlok instance using their management API
+2. Extract individual preview and component logic into specific functions that are easier to handle an reuse.
