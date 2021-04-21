@@ -16,6 +16,10 @@ https://github.com/vercel/next.js/tree/canary/examples/cms-storyblok
 
 https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 
+## Updates 21/04/21
+
+- Updated Tailwind packages and set it to use the JIT mode -> see more here https://tailwindcss.com/docs/just-in-time-mode#enabling-jit-mode
+
 ## Includes
 
 - Eslint
