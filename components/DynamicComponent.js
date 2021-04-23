@@ -13,8 +13,8 @@ const DynamicComponent = ({ blok }) => {
     const Component = Components[blok.component];
     // wrap with SbEditable for visual editing manually add to different components if you want to change which are editable
     return (
-      <SbEditable content={blok}>
-        <Component blok={blok} />
+      <SbEditable content={blok} key={blok._uid}>
+        <Component {...blok} />
       </SbEditable>
     );
   }

@@ -5,13 +5,13 @@ import Nav from '../components/layout/Nav';
 import useStoryblok from '../hooks/useStoryBlok';
 import Storyblok from '../lib/storyblok';
 
-export default function Home({ story, layout, preview }) {
+export default function Home({ story, preview, layout }) {
   // the Storyblok hook to enable live updates
 
   const storyBlok = useStoryblok(story, preview);
 
-  const footer = layout.footer[0];
-  const nav = layout.nav[0];
+  const footer = layout?.footer[0];
+  const nav = layout?.nav[0];
   return (
     <>
       <Nav {...nav} />
@@ -27,33 +27,42 @@ export default function Home({ story, layout, preview }) {
     </>
   );
 }
-export async function getStaticProps(context) {
-  let slug = 'home';
+export async function getStaticProps({ preview, params }) {
+  let slug = params?.slug;
 
   let parameters = {
     version: 'draft' // or 'published'
   };
 
-  if (context.preview) {
+  if (preview) {
     parameters.version = 'draft';
 
     parameters.cv = Date.now();
   }
 
   let { data } = await Storyblok.get(`cdn/stories/${slug}`, parameters);
-  // let layout = await Storyblok.get(
-  //   `cdn/stories/<<Add layout here >>`,
-  //   parameters
-  // );
-  let layout = false;
 
   return {
     props: {
       story: data ? data.story : false,
-      layout: layout?.data ? layout?.data.story.content : false,
-      preview: context.preview || false
+      preview: preview || false
     },
-
     revalidate: 10
+  };
+}
+
+export async function getStaticPaths() {
+  let { data } = await Storyblok.get('cdn/links/', {});
+  let paths = [];
+
+  for (const linkKey of Object.keys(data.links)) {
+    if (!data.links[linkKey].is_folder && data.links[linkKey].slug !== 'home') {
+      paths.push({ params: { slug: data.links[linkKey].slug } });
+    }
+  }
+
+  return {
+    paths: paths,
+    fallback: false
   };
 }
