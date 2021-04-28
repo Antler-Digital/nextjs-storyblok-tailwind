@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 
-import siteSettings from '../static/SiteSettings';
+import siteSettings from '../../lib/SiteSettings';
 
 export const Seo = ({
   title,
