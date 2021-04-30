@@ -2,9 +2,17 @@ import { useEffect, useState } from 'react';
 
 import Storyblok from '../lib/storyblok';
 
-export default function useStoryblok(originalStory, preview) {
+export default function useStoryblok(originalStory, preview, newPath) {
   let [story, setStory] = useState(originalStory);
+  // a path tracks whether to update the story because of navigation
+  // there were issues with the CMS not updating to reflect content changes due to the story being reset to the original story
+  let [path, setPath] = useState(newPath);
 
+  // handles updating the story dynamically
+  if (path !== newPath) {
+    setPath(newPath);
+    setStory(originalStory);
+  }
   // adds the events for updating the visual editor
   // see https://www.storyblok.com/docs/guide/essentials/visual-editor#initializing-the-storyblok-js-bridge
   function initEventListeners() {
@@ -32,7 +40,7 @@ export default function useStoryblok(originalStory, preview) {
     if (preview) {
       addBridge(initEventListeners);
     }
-  });
+  }, [preview]);
 
   return story;
 }

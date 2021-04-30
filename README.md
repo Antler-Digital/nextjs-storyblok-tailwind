@@ -16,17 +16,7 @@ https://github.com/vercel/next.js/tree/canary/examples/cms-storyblok
 
 https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 
-## Update 28/04/21
 
-- Added Rich text rendered to render Storyblok rich text in a more react and better way
-
-## Updates 23/04/21
-
-- Added Typescript support
-
-## Updates 21/04/21
-
-- Updated Tailwind packages and set it to use the JIT mode -> see more here https://tailwindcss.com/docs/just-in-time-mode#enabling-jit-mode
 
 ## Includes
 
@@ -39,6 +29,24 @@ https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 - React Hook Forms
 - AOS (watch out for static rendering and google crawlers not seeing correct content
 - Storyblok Rich Text renderer see docs here https://github.com/claus/storyblok-rich-text-react-renderer
+- Font Awesome (for Story Blok Plugin add in icons in _app.js)
+
+
+## Update 30/04/21
+- Updated to completely dynamic generation of pages with [[...slug]]
+- Add in Fontawesome support for Storyblok plugin
+
+## Update 28/04/21
+
+- Added Rich text rendered to render Storyblok rich text in a more react and better way
+
+## Updates 23/04/21
+
+- Added Typescript support
+
+## Updates 21/04/21
+
+- Updated Tailwind packages and set it to use the JIT mode -> see more here https://tailwindcss.com/docs/just-in-time-mode#enabling-jit-mode
 
 ## To Add
 
