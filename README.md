@@ -31,6 +31,13 @@ https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 - Storyblok Rich Text renderer see docs here https://github.com/claus/storyblok-rich-text-react-renderer
 - Font Awesome (for Story Blok Plugin add in icons in _app.js)
 
+## Update 08/05/21
+- Updated the prettier configs to remove Unicorn and Tailwind (they are irritating)
+- Added nextJs config with default assets locale for storyBlok (required to pull images for NextJs/Image)
+- Moved examples of other page generation (specific: i.e. index.js and semi-catch all: [...slug].js to lib folders in case of need) - shouldn't be required with a  catch all 
+- Prevented no layout errors
+- added useBodyLock hook for implementing navigation menus
+- added useSessionStorage and useLocalStorage hooks 
 
 ## Update 30/04/21
 - Updated to completely dynamic generation of pages with [[...slug]]

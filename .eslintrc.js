@@ -23,10 +23,8 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:prettier/recommended',
     'plugin:sonarjs/recommended',
-    'plugin:unicorn/recommended',
     'plugin:security/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:tailwind/recommended'
+    'plugin:react-hooks/recommended'
   ],
   rules: {
     'no-console': 'error',

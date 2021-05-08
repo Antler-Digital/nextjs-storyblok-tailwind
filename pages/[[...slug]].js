@@ -7,17 +7,17 @@ import Nav from '../components/layout/Nav';
 import useStoryblok from '../hooks/useStoryBlok';
 import Storyblok from '../lib/storyblok';
 
-export default function Home({ story, layout, preview }) {
+export default function Home({ story, layout={}, preview }) {
   // the Storyblok hook to enable live updates
   const router = useRouter();
   const path = router?.query?.slug || false;
   const storyBlok = useStoryblok(story, preview, path);
-  const footer = layout.footer[0];
-  const nav = layout.nav[0];
+  const footer = layout.footer && layout.footer[0];
+  const nav = layout.nav && layout.nav[0];
 
   return (
     <>
-      <Nav {...nav} />
+     { nav &&  <Nav {...nav} />}
       <Layout preview={preview}>
         {storyBlok?.content.body
           ? storyBlok.content.body.map(blok => (
@@ -29,7 +29,7 @@ export default function Home({ story, layout, preview }) {
           ))
           : null}
       </Layout>
-      <Footer {...footer} />
+     { footer &&  <Footer {...footer} />}
     </>
   );
 }
@@ -85,15 +85,16 @@ export async function getStaticProps({ preview, params }) {
   //   });
   // }
 
-  let layout = await storyBlockInstance.get(
-    `cdn/stories/<<ADD_ID_HERE>>`,
-    parameters
-  );
+  // you will need a layout component
+  // let layout = await storyBlockInstance.get(
+  //   `cdn/stories/<<ADD_ID_HERE>>`,
+  //   parameters
+  // );
 
   return {
     props: {
       story: data ? data.story : false,
-      layout: layout.data ? layout.data.story.content : false,
+      // layout: layout.data ? layout.data.story.content : false,
       preview: preview || false
       // newsArticles: newsArticles ? newsArticles.data?.stories : []
     },
