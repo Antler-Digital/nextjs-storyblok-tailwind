@@ -1,6 +1,14 @@
 module.exports = {
   mode: 'jit',
-  purge: ['./src/**/*.js', './src/**/*.jsx', './src/**/*.ts', './src/**/*.tsx'],
+  purge: [
+    './components/**/*.js',
+    './components/**/*.jsx',
+    './components/**/*.tsx',
+    './components/**/*.ts',
+    './pages/**/*.js',
+    './pages/**/*.ts',
+    './pages/**/*.tsx'
+  ],
   theme: {
     extend: {
       opacity: {

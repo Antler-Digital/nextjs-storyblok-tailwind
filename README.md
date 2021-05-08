@@ -38,6 +38,7 @@ https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 - Prevented no layout errors
 - added useBodyLock hook for implementing navigation menus
 - added useSessionStorage and useLocalStorage hooks 
+- updated the purge instructions for TW 
 
 ## Update 30/04/21
 - Updated to completely dynamic generation of pages with [[...slug]]
