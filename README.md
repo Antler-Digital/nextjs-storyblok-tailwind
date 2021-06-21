@@ -31,6 +31,14 @@ https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 - Storyblok Rich Text renderer see docs here https://github.com/claus/storyblok-rich-text-react-renderer
 - Font Awesome (for Story Blok Plugin add in icons in _app.js)
 
+## Update 21/06/21
+- Updated packages 
+  - Next 11 ( added support for local blurred images in Next/ Image and dynamic support with own server)
+  - Added Next JS Linting
+  - TailwindCSS 4.2+ 
+    - Better JIT and CLI for Tailwind
+    - Can use before: etc to set things straight from classNames
+
 ## Update 08/05/21
 - Updated the prettier configs to remove Unicorn and Tailwind (they are irritating)
 - Added nextJs config with default assets locale for storyBlok (required to pull images for NextJs/Image)

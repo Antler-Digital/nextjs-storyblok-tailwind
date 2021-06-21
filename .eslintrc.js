@@ -21,6 +21,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
+    'plugin:next',
+    'plugin:next/core-web-vitals',
     'plugin:prettier/recommended',
     'plugin:sonarjs/recommended',
     'plugin:security/recommended',
