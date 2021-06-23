@@ -21,12 +21,14 @@ module.exports = {
     'eslint:recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
-    'plugin:next',
-    'plugin:next/core-web-vitals',
     'plugin:prettier/recommended',
     'plugin:sonarjs/recommended',
+    // 'plugin:unicorn/recommended',
     'plugin:security/recommended',
-    'plugin:react-hooks/recommended'
+    'plugin:react-hooks/recommended',
+    // 'next',
+    // 'next/core-web-vitals',
+    'prettier'
   ],
   rules: {
     'no-console': 'error',
@@ -34,6 +36,15 @@ module.exports = {
     'react/prop-types': 'off',
     'simple-import-sort/imports': 'error',
     'unicorn/filename-case': 'off',
-    indent: [2, 2]
+    // look into how to turn this actually off
+    'next/no-img-element': 'off',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton']
+      }
+    ]
   }
 };
