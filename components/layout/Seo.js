@@ -14,7 +14,7 @@ export const Seo = ({
     ? `${title} | ${siteSettings.title}`
     : siteSettings.title;
   const metaDescription = description || siteSettings.description;
-  const metaImage = `${siteSettings.siteUrl}${image ? `${image}` : logo}`; // placeholder logo here
+  const metaImage = `${siteSettings.siteUrl}${image ? image : logo}`; // placeholder logo here
 
   return (
     <Head>
