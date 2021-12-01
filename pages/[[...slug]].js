@@ -7,7 +7,7 @@ import Nav from '../components/layout/Nav';
 import useStoryblok from '../hooks/useStoryBlok';
 import Storyblok from '../lib/storyblok';
 
-export default function Home({ story, layout={}, preview }) {
+export default function Home({ story, layout = {}, preview }) {
   // the Storyblok hook to enable live updates
   const router = useRouter();
   const path = router?.query?.slug || false;
@@ -17,19 +17,15 @@ export default function Home({ story, layout={}, preview }) {
 
   return (
     <>
-     { nav &&  <Nav {...nav} />}
+      {nav && <Nav {...nav} />}
       <Layout preview={preview}>
         {storyBlok?.content.body
           ? storyBlok.content.body.map(blok => (
-              <DynamicComponent
-                blok={blok}
-                key={blok._uid}
-                newsArticles={newsArticles}
-              />
-          ))
+              <DynamicComponent blok={blok} key={blok._uid} />
+            ))
           : null}
       </Layout>
-     { footer &&  <Footer {...footer} />}
+      {footer && <Footer {...footer} />}
     </>
   );
 }
