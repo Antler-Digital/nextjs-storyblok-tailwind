@@ -104,7 +104,9 @@ export async function getStaticPaths() {
   let { data } = await Storyblok().get('cdn/links/', {});
 
   // create the links array
-  const links = Object.keys(data.links).map(link => data.links[link]);
+  const links = Object.keys(data.links)
+    .map(link => data.links[link])
+    .filter(link => !link.is_folder);
 
   const paths = links
     .map(link => {
