@@ -31,6 +31,14 @@ https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 - Storyblok Rich Text renderer see docs here https://github.com/claus/storyblok-rich-text-react-renderer
 - Font Awesome (for Story Blok Plugin add in icons in _app.js)
 
+## Update 19/01/22
+- Updated packages
+  - Next 12 
+  -  Tailwind V3 
+  - StoryBlok 4.2
+- Updated `preview.js` with new same site configs to reenable preview mode on localhost
+
+
 ## Update 21/06/21
 - Updated packages 
   - Next 11 ( added support for local blurred images in Next/ Image and dynamic support with own server)

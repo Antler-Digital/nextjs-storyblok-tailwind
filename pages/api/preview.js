@@ -8,12 +8,12 @@ export default async function preview(request, response) {
   // Enable Preview Mode by setting the cookies
   response.setPreviewData({});
 
-  // Set cookie to None, so it can be read in the Storyblok iframe
-  const cookies = response.getHeader('Set-Cookie');
-  response.setHeader(
-    'Set-Cookie',
-    cookies.map(cookie => cookie.replace('SameSite=Lax', 'SameSite=None'))
-  );
+  // // Set cookie to None, so it can be read in the Storyblok iframe
+  const previous = response.getHeader('Set-Cookie');
+  previous.forEach((cookie, index) => {
+    previous[index] = cookie.replace('SameSite=Lax', 'SameSite=None;Secure');
+  });
+  response.setHeader(`Set-Cookie`, previous);
 
   // Redirect to the entry location
   let slug = request.query.slug;
