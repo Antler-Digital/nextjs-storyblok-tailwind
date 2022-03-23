@@ -25,10 +25,10 @@ module.exports = {
     'plugin:sonarjs/recommended',
     // 'plugin:unicorn/recommended',
     'plugin:security/recommended',
-    'plugin:react-hooks/recommended',
+    'plugin:react-hooks/recommended'
     // 'next',
     // 'next/core-web-vitals',
-    'prettier'
+    // 'prettier'
   ],
   rules: {
     'no-console': 'error',
