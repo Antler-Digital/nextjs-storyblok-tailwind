@@ -1,108 +1,57 @@
-import { useRouter } from 'next/router';
+import {
+  getStoryblokApi,
+  StoryblokComponent,
+  useStoryblokState
+} from '@storyblok/react';
 
-import DynamicComponent from '../components/DynamicComponent';
-import Footer from '../components/layout/Footer';
-import Layout from '../components/layout/Layout';
-import Nav from '../components/layout/Nav';
-import useStoryblok from '../hooks/useStoryBlok';
-import Storyblok from './storyblok';
-
-export default function Home({ story, layout = {}, preview }) {
-  // the Storyblok hook to enable live updates
-  const router = useRouter();
-  const path = router?.query?.slug || false;
-  const storyBlok = useStoryblok(story, preview, path);
-  const footer = layout.footer && layout.footer[0];
-  const nav = layout.nav && layout.nav[0];
-
+export default function Home({ story, preview }) {
+  story = useStoryblokState(story, {}, preview);
   return (
-    <>
-      {nav && <Nav {...nav} />}
-      <Layout preview={preview}>
-        {storyBlok?.content.body
-          ? storyBlok.content.body.map(blok => (
-              <DynamicComponent blok={blok} key={blok._uid} />
-            ))
-          : null}
-      </Layout>
-      {footer && <Footer {...footer} />}
-    </>
+    <div className="">
+      <header>
+        <h1>{story ? story.name : 'My Site'}</h1>
+      </header>
+      {/* You might need to change this for whatever the structure of a page is */}
+      {story.content.body.map(component => (
+        <StoryblokComponent key={component.id} blok={component} />
+      ))}
+    </div>
   );
 }
 export async function getStaticProps({ preview, params }) {
-  const storyBlockInstance = Storyblok({
-    preview: preview
-  });
-
   // For accessing latest content
   // let newsArticles = false;
 
   let slug = params?.slug || 'home';
 
   let parameters = {
-    version: 'published' // or 'published'
+    version: 'published'
   };
 
   if (preview) {
     parameters.version = 'draft';
-
     parameters.cv = Date.now();
   }
 
-  // Managing nested catch all routes
-  let { data } = await storyBlockInstance.get(
-    `cdn/stories/${Array.isArray(slug) ? slug.join('/') : slug}`,
-    parameters
-  );
+  const storyblokApi = getStoryblokApi();
 
-  // creates list of component names
-  // used to check if it needs to lead component types
-  // const componentNames = data.story.content.body.map(
-  //   ({ component }) => component
-  // );
-
-  // check to see if there is a component that requires the news articles
-  // const requiresArticles = componentNames.indexOf('LatestNewsSection') > 0;
-
-  // if there is then fetch news articles
-  // if (requiresArticles) {
-  //   newsArticles = await storyBlockInstance.get(`cdn/stories/`, {
-  //     ...parameters,
-  //     starts_with: 'news/',
-  //     filter_query: {
-  //       content: {
-  //         component: {
-  //           is: 'NewsArticle'
-  //         }
-  //       }
-  //     },
-  //     per_page: 12,
-  //     sort_by: 'first_published_at:desc'
-  //   });
-  // }
-
-  // you will need a layout component
-  // let layout = await storyBlockInstance.get(
-  //   `cdn/stories/<<ADD_ID_HERE>>`,
-  //   parameters
-  // );
-
+  let { data } = await storyblokApi.get(`cdn/stories/${slug}`, parameters);
   return {
     props: {
       story: data ? data.story : false,
-      // layout: layout.data ? layout.data.story.content : false,
+      key: data ? data.story.id : false,
       preview: preview || false
-      // newsArticles: newsArticles ? newsArticles.data?.stories : []
     },
-
-    revalidate: 10
+    // once per hour
+    revalidate: 3600
   };
 }
 
 export async function getStaticPaths() {
-  // fetch all pages from Storyblok
-  let { data } = await Storyblok().get('cdn/links/', {});
+  const storyblokApi = await getStoryblokApi();
 
+  // fetch all pages from Storyblok
+  let { data } = await storyblokApi.get('cdn/links/');
   // create the links array
   const links = Object.keys(data.links)
     .map(link => data.links[link])

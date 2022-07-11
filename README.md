@@ -16,8 +16,6 @@ https://github.com/vercel/next.js/tree/canary/examples/cms-storyblok
 
 https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 
-
-
 ## Includes
 
 - Eslint
@@ -29,34 +27,45 @@ https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 - React Hook Forms
 - AOS (watch out for static rendering and google crawlers not seeing correct content
 - Storyblok Rich Text renderer see docs here https://github.com/claus/storyblok-rich-text-react-renderer
-- Font Awesome (for Story Blok Plugin add in icons in _app.js)
+- Font Awesome (for Story Blok Plugin add in icons in \_app.js)
+
+## Update 11/07/22
+
+- Update to the new v2 requirements
+- To access the CMS use /admin/editor.html
+  - This prevents the need for https on the webapp
+- Add Husky and Git CZ
+  - Commit now with `yarn cz`
 
 ## Update 19/01/22
+
 - Updated packages
-  - Next 12 
-  -  Tailwind V3 
+  - Next 12
+  - Tailwind V3
   - StoryBlok 4.2
 - Updated `preview.js` with new same site configs to reenable preview mode on localhost
 
-
 ## Update 21/06/21
-- Updated packages 
+
+- Updated packages
   - Next 11 ( added support for local blurred images in Next/ Image and dynamic support with own server)
   - Added Next JS Linting
-  - TailwindCSS 4.2+ 
+  - TailwindCSS 4.2+
     - Better JIT and CLI for Tailwind
     - Can use before: etc to set things straight from classNames
 
 ## Update 08/05/21
+
 - Updated the prettier configs to remove Unicorn and Tailwind (they are irritating)
 - Added nextJs config with default assets locale for storyBlok (required to pull images for NextJs/Image)
-- Moved examples of other page generation (specific: i.e. index.js and semi-catch all: [...slug].js to lib folders in case of need) - shouldn't be required with a  catch all 
+- Moved examples of other page generation (specific: i.e. index.js and semi-catch all: [...slug].js to lib folders in case of need) - shouldn't be required with a catch all
 - Prevented no layout errors
 - added useBodyLock hook for implementing navigation menus
-- added useSessionStorage and useLocalStorage hooks 
-- updated the purge instructions for TW 
+- added useSessionStorage and useLocalStorage hooks
+- updated the purge instructions for TW
 
 ## Update 30/04/21
+
 - Updated to completely dynamic generation of pages with [[...slug]]
 - Add in Fontawesome support for Storyblok plugin
 

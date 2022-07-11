@@ -7,19 +7,26 @@ import { apiPlugin, storyblokInit } from '@storyblok/react';
 import AOS from 'aos';
 import { useEffect } from 'react';
 
+import Teaser from '../components/Teaser';
+
 // adding brands to FontAwesome selector
 library.add(fab);
+
+const components = {
+  Teaser: Teaser
+};
+
+storyblokInit({
+  accessToken: process.env.STORYBLOK_PREVIEW_API_KEY,
+  use: [apiPlugin],
+  components: components
+});
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     AOS.init({
       easing: 'ease-out-cubic',
       once: true
-    });
-
-    storyblokInit({
-      accessToken: process.env.STORYBLOK_PREVIEW_API_KEY,
-      use: [apiPlugin]
     });
   }, []);
 
