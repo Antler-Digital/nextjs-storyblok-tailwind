@@ -5,7 +5,7 @@ import Footer from '../components/layout/Footer';
 import Layout from '../components/layout/Layout';
 import Nav from '../components/layout/Nav';
 import useStoryblok from '../hooks/useStoryBlok';
-import Storyblok from '../lib/storyblok';
+import Storyblok from './storyblok';
 
 export default function Home({ story, layout = {}, preview }) {
   // the Storyblok hook to enable live updates

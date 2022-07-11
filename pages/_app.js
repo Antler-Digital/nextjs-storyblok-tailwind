@@ -3,6 +3,7 @@ import 'aos/dist/aos.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { apiPlugin, storyblokInit } from '@storyblok/react';
 import AOS from 'aos';
 import { useEffect } from 'react';
 
@@ -14,6 +15,11 @@ function MyApp({ Component, pageProps }) {
     AOS.init({
       easing: 'ease-out-cubic',
       once: true
+    });
+
+    storyblokInit({
+      accessToken: process.env.STORYBLOK_PREVIEW_API_KEY,
+      use: [apiPlugin]
     });
   }, []);
 

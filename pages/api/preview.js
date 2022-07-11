@@ -1,28 +1,35 @@
-export default async function preview(request, response) {
+export default async function preview(req, res) {
+  const { slug = '' } = req.query;
+
+  // get the storyblok params for the bridge to work
+
+  const params = req.url.split('?');
+
   // Check the secret and next parameters
+
   // This secret should only be known to this API route and the CMS
-  if (request.query.secret !== process.env.STORYBLOK_PREVIEW_API_KEY) {
-    return response.status(401).json({ message: 'Invalid token' });
+
+  if (req.query.secret !== 'MY_SECRET_TOKEN') {
+    return res.status(401).json({ message: 'Invalid token' });
   }
 
   // Enable Preview Mode by setting the cookies
-  response.setPreviewData({});
 
-  // // Set cookie to None, so it can be read in the Storyblok iframe
-  const previous = response.getHeader('Set-Cookie');
-  previous.forEach((cookie, index) => {
-    previous[index] = cookie.replace('SameSite=Lax', 'SameSite=None;Secure');
-  });
-  response.setHeader(`Set-Cookie`, previous);
+  res.setPreviewData({});
 
-  // Redirect to the entry location
-  let slug = request.query.slug;
+  // Set cookie to None, so it can be read in the Storyblok iframe
 
-  // Handle home slug
-  if (slug === 'home') {
-    slug = '';
-  }
+  const cookies = res.getHeader('Set-Cookie');
+
+  res.setHeader(
+    'Set-Cookie',
+
+    cookies.map(cookie =>
+      cookie.replace('SameSite=Lax', 'SameSite=None;Secure')
+    )
+  );
 
   // Redirect to the path from entry
-  response.redirect(`/${slug}`);
+
+  res.redirect(`/${slug}?${params[1]}`);
 }

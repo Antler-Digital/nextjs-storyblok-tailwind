@@ -196,6 +196,20 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.4.tgz#0c8b74c50f29ee44f423f7416829c0bf8bb5eb27"
   integrity sha512-LwzQKA4vzIct1zNZzBmRKI9QuNpLgTQMEjsQLf3BXuGYb3QPTP4Yjf6mkdX+X1mYttZ808QpOwAzZjv28kq7DA==
 
+"@storyblok/js@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@storyblok/js/-/js-1.6.1.tgz#385c08e960d93a7463c414dbf30254f089e6e7fe"
+  integrity sha512-Umxi3rcIEK5waZNynS62AEsw3ygbFhyv0s0ZjFWVvBxJKNVEhqqg7Zx6Fa8fo+lW6vFsdlnXmvX7CfjI94RzrA==
+  dependencies:
+    storyblok-js-client "^4.5.2"
+
+"@storyblok/react@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@storyblok/react/-/react-1.0.12.tgz#724ac69b7b802a24f9e5640b68999637621faecd"
+  integrity sha512-7VGggRvMQLW9d+rw+X0UfMl5mTJ/U6LQD4KdXlRVMdKEf5OSqzK/oKPeH+/QKMalv80BbnEU4G5dfygaWoLc5A==
+  dependencies:
+    "@storyblok/js" "^1.6.1"
+
 "@swc/helpers@0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.4.2.tgz#ed1f6997ffbc22396665d9ba74e2a5c0a2d782f8"
@@ -2263,7 +2277,7 @@ source-map-js@^1.0.1, source-map-js@^1.0.2:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
-storyblok-js-client@^4.5.6:
+storyblok-js-client@^4.5.2, storyblok-js-client@^4.5.6:
   version "4.5.6"
   resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-4.5.6.tgz#caab0bb1ead8618f84afcc35be9305883d85e628"
   integrity sha512-S0cXKkEqGDibD32K48FFodjeu/+eF++nrHhrLzo/bKxrnyQiPChPccFAnzsJCQ6uMvRuVGZzjKwM5/sMeBRthg==
