@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "cz": "git-cz",
-    "prepare": "husky install && next telemetry disable"
+    "prepare": "husky install && next telemetry disable",
+    "lint": "eslint --ext ts --ext tsx --ext js --fix && next lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
