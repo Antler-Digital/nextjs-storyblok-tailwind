@@ -32,8 +32,8 @@ https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 ## Update 11/07/22
 
 - Update to the new v2 requirements
-- To access the CMS use /admin/editor.html
-  - This prevents the need for https on the webapp
+- To access the CMS use /admin
+  - This prevents the need for https on the Storyblok webapp
 - Add Husky and Git CZ
   - Commit now with `yarn cz`
 
