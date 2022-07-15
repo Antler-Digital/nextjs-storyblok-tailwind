@@ -1,6 +1,14 @@
 // import { useRouter } from 'next/router';
 
-const Layout = ({ children, preview }) => {
+import React from 'react';
+
+const Layout = ({
+  children,
+  preview
+}: {
+  children?: React.ReactNode;
+  preview: boolean;
+}) => {
   // const router = useRouter();
   // const path = router?.query?.slug || false;
 

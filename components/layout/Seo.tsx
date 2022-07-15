@@ -2,6 +2,15 @@ import Head from 'next/head';
 import React from 'react';
 
 import siteSettings from '../../lib/SiteSettings';
+import { StoryBlokImageProps } from '../elements/StoryBlokImage';
+
+interface SeoProps {
+  title: string;
+  description: string;
+  image: StoryBlokImageProps;
+  article?: boolean;
+  logo: StoryBlokImageProps;
+}
 
 export const Seo = ({
   title,
@@ -9,12 +18,12 @@ export const Seo = ({
   image,
   article,
   logo // placeholder
-}) => {
+}: SeoProps) => {
   const metaTitle = title
     ? `${title} | ${siteSettings.title}`
     : siteSettings.title;
   const metaDescription = description || siteSettings.description;
-  const metaImage = `${siteSettings.siteUrl}${image ? image : logo}`; // placeholder logo here
+  const metaImage = `${siteSettings.url}${image ? image : logo}`; // placeholder logo here
 
   return (
     <Head>
@@ -28,7 +37,7 @@ export const Seo = ({
       <link rel="icon" href="/favicon.ico" />
 
       {/* Facebook */}
-      <meta property="og:url" content={siteSettings.siteUrl} />
+      <meta property="og:url" content={siteSettings.url} />
       <meta property="og:type" content={article ? `article` : `website`} />
       <meta property="og:title" content={metaTitle} />
       <meta property="og:description" content={metaDescription} />
@@ -36,7 +45,7 @@ export const Seo = ({
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={siteSettings.siteUrl} />
+      <meta name="twitter:url" content={siteSettings.url} />
       <meta name="twitter:title" content={metaTitle} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:image" content={metaImage} />

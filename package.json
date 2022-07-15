@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "cz": "git-cz",
+    "pretty": "prettier --write **/**/*.tsx **/**/*.ts",
     "prepare": "husky install && next telemetry disable",
-    "lint": "eslint --ext ts --ext tsx --ext js --fix && next lint"
+    "lint": "prettier --write **/**/*.tsx **/**/*.ts && eslint --ext ts --ext tsx --ext js --fix && next lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -30,6 +31,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.3",
+    "@types/aos": "^3.0.4",
     "@types/node": "^18.0.3",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",

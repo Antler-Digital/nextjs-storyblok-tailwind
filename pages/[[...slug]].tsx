@@ -3,29 +3,49 @@ import {
   StoryblokComponent,
   useStoryblokState
 } from '@storyblok/react';
+import { GetStaticPropsContext } from 'next';
 
-export default function Home({ story, preview }) {
+import Layout from '../components/layout/Layout';
+import Nav from '../components/layout/Nav';
+
+export default function Page({
+  story,
+  preview
+}: {
+  story: any;
+  preview: boolean;
+}) {
   story = useStoryblokState(story, {}, preview);
+
   return (
-    <div className="">
-      <header>
-        <h1>{story ? story.name : 'My Site'}</h1>
-      </header>
+    <Layout preview={preview}>
+      {story.content.Nav && <Nav {...story.content.Nav.content} />}
       {/* You might need to change this for whatever the structure of a page is */}
-      {story.content.body.map(component => (
+      {story.content.body.map((component: any) => (
         <StoryblokComponent key={component.id} blok={component} />
       ))}
-    </div>
+    </Layout>
   );
 }
-export async function getStaticProps({ preview, params }) {
+
+type ParametersTypes = {
+  version: 'published' | 'draft';
+  resolve_relations?: string;
+  cv?: number;
+};
+
+export async function getStaticProps({
+  preview,
+  params
+}: GetStaticPropsContext) {
   // For accessing latest content
   // let newsArticles = false;
 
   let slug = params?.slug || 'home';
 
-  let parameters = {
-    version: 'published'
+  let parameters: ParametersTypes = {
+    version: 'published',
+    resolve_relations: 'Page.Nav,Page.nav'
   };
 
   if (preview) {
@@ -42,8 +62,8 @@ export async function getStaticProps({ preview, params }) {
       key: data ? data.story.id : false,
       preview: preview || false
     },
-    // once per hour
-    revalidate: 3600
+    // once per minute
+    revalidate: 60
   };
 }
 
@@ -55,7 +75,8 @@ export async function getStaticPaths() {
   // create the links array
   const links = Object.keys(data.links)
     .map(link => data.links[link])
-    .filter(link => !link.is_folder);
+    .filter(link => !link.is_folder)
+    .filter(link => !link.slug.includes('layout'));
 
   const paths = links
     .map(link => {
@@ -64,11 +85,16 @@ export async function getStaticPaths() {
       return {
         // if path is index route then return no forward /
         // if path is not index route then split on subpath to provide in correct format for NextJS catch all routes and remove empty strings
-        params: { slug: path === '/' ? [''] : path.split('/').filter(n => n) }
+        params: {
+          slug: path === '/' ? [''] : path.split('/').filter((n: any) => n)
+        }
       };
     })
     // filter out Layout Components
-    .filter(link => link.params.slug.length > 0);
+    .filter(
+      link =>
+        link.params.slug.length > 0 || !link.params.slug[0].includes('layout')
+    );
 
   return {
     paths,

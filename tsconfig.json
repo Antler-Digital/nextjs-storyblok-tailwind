@@ -3,10 +3,7 @@
     "module": "commonjs",
     "target": "esnext",
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -19,11 +16,6 @@
     "resolveJsonModule": true,
     "incremental": true
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["**/**/*.ts", "**/**/*.tsx"]
 }

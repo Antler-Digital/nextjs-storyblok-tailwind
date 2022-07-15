@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'storyblok-rich-text-react-renderer';
-const RichText = ({ document }) => {
+const RichText = ({ document }: any) => {
   return <div>{render(document)}</div>;
 };
 

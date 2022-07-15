@@ -11,6 +11,10 @@ module.exports = {
     node: true,
     es6: true
   },
+  globals: {
+    JSX: true,
+    React: true
+  },
   plugins: ['simple-import-sort', 'prettier'],
   settings: {
     react: {
@@ -25,19 +29,26 @@ module.exports = {
     'plugin:sonarjs/recommended',
     // 'plugin:unicorn/recommended',
     'plugin:security/recommended',
-    'plugin:react-hooks/recommended'
-    // 'next',
-    // 'next/core-web-vitals',
-    // 'prettier'
+    // 'plugin:react-hooks/recommended',
+    'next',
+    'next/core-web-vitals',
+    'prettier'
   ],
   rules: {
     'no-console': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    'simple-import-sort/imports': 'error',
+    'react-hooks/exhaustive-deps': [
+      'warn',
+      {
+        additionalHooks: 'useRecoilCallback|useRecoilTransaction_UNSTABLE'
+      }
+    ],
+    // 'simple-import-sort/imports': 'warn',
     'unicorn/filename-case': 'off',
-    // look into how to turn this actually off
     'next/no-img-element': 'off',
+    // 'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }], // lint breaks in BondRating.tsx when using this rule
+    'no-unused-vars': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -45,7 +56,6 @@ module.exports = {
         specialLink: ['hrefLeft', 'hrefRight'],
         aspects: ['invalidHref', 'preferButton']
       }
-    ],
-    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
+    ]
   }
 };

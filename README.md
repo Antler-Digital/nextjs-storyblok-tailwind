@@ -29,6 +29,12 @@ https://gapi-browser.storyblok.com/?token=YOUR_STORYBLOK_SPACE_TOKEN
 - Storyblok Rich Text renderer see docs here https://github.com/claus/storyblok-rich-text-react-renderer
 - Font Awesome (for Story Blok Plugin add in icons in \_app.js)
 
+## Update 15/07/22
+
+- Updated to TSX and Typescript
+- Added better linting
+- fixed imports
+
 ## Update 11/07/22
 
 - Update to the new v2 requirements

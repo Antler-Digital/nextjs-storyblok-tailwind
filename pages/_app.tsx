@@ -13,7 +13,7 @@ import Teaser from '../components/Teaser';
 library.add(fab);
 
 const components = {
-  Teaser: Teaser
+  Teaser
 };
 
 storyblokInit({
@@ -22,7 +22,7 @@ storyblokInit({
   components: components
 });
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
   useEffect(() => {
     AOS.init({
       easing: 'ease-out-cubic',
